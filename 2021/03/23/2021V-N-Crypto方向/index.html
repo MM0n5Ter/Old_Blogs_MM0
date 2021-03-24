@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>2021V&amp;N Crypto方向 | Avalon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="MM0n5Ter">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'null'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<div class="single">
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2021-03-23</span>
+    <h2>2021V&N Cryp...</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%98%AF%E5%81%9A%E4%B8%8D%E5%87%BA%E6%9D%A5%E7%9A%84%E9%A2%98/" rel="tag">是做不出来的题</a></div>
+    </div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <p>2021V&amp;N 公开赛，因为个人原因（咕咕咕🕊所以只做了一个签到</p>
+<p>在补上了在补上了额👾👾👾</p>
+<span id="more"></span>
+
+<h1 id="WhiteGive"><a href="#WhiteGive" class="headerlink" title="WhiteGive"></a>WhiteGive</h1><p><em>呜呜呜，白给题不会做</em></p>
+<h3 id="题目描述如下："><a href="#题目描述如下：" class="headerlink" title="题目描述如下："></a>题目描述如下：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> url</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">m = bytes_to_long(url)</span><br><span class="line">p = getPrime(<span class="number">512</span>)</span><br><span class="line">q = getPrime(<span class="number">512</span>)</span><br><span class="line">n = p * q</span><br><span class="line">d = getPrime(<span class="number">256</span>)</span><br><span class="line">e = inverse(d,(p-<span class="number">1</span>)*(q-<span class="number">1</span>))</span><br><span class="line">c = <span class="built_in">pow</span>(m,e,n)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"></span><br><span class="line">m = e</span><br><span class="line">p = getPrime(<span class="number">512</span>)</span><br><span class="line">q = getPrime(<span class="number">512</span>)</span><br><span class="line">n = p * p * q</span><br><span class="line">e = <span class="number">0x10001</span></span><br><span class="line">d = inverse(e,lcm(p,lcm(p-<span class="number">1</span>,q-<span class="number">1</span>)))</span><br><span class="line">c = <span class="built_in">pow</span>(m,e,n)</span><br><span class="line">hint = <span class="built_in">pow</span>(d,e,n)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"><span class="built_in">print</span>(hint)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">97814568264814384858194701955408461509880555772006698372422205341758322175891474378211599333051180365254844248340812534463000531890490435018379585036704801177155418066770861143206836558793774360498040810255823235715535487716966004194143204900564413879660115112965484824906920141847149888933004740523449213441</span></span><br><span class="line"><span class="string">86143311788363675684674113699193046781796638913243016152555572150858159500527674063754694514501999791875561142925154991000532628799185608465062814546108160434468098898040769021072007374156546314975240583347468026001633652940408779155579339470960571067652924814623371177901052302005289155305089588204204313261</span></span><br><span class="line"><span class="string">1246903000089073759886267722667196003041462505274526737638837808213476294697746018085346623497511017543801377442390781101585650581984057653018703031659844145960721073451379508212905335383758157379301019575213158532070229897587088955814288202279949391608732448294591675986989254272257059551622461096394217684402667140362275595245430242117193793913872208576714597860532581116390903216389172132085635891741189355461016795362341416848534340615825023292174042406128959</span></span><br><span class="line"><span class="string">952508462840095293368043281511747192551431448088755251878915582522463097721381421883702408853564036431155676272901680250701398946525803160765527940151587567521509500006089852079864042238196362897144754722623523621230744820970423076092319608853809407595863195726851921082224085255808985329769890887863865121647796115540376158135632760785321953364738008064130705467326745546629505023549047992509562623348749056757848144371814157305011884825502144329268299851210747</span></span><br><span class="line"><span class="string">788785744509676701442642497798353940704045062680685297430840370664093043099033424646382070232242765761123110381200239132310785932203252095093993313010883982078216697297202940152563278231011836966627537170460186597134847633828107444548759805274516431300662852153808962421740187067058018192457264083227110866080267684557127718769967184710395811547902947248700889674967381917907905535103547918375731341071557144999864774198881339085314424766509424492349867615604684</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>先把最外层的套娃给解了:</p>
+<p>$$d*e=k_1*p*lcm(p-1,q-1)+1 \tag{1.1} $$</p>
+<p>$$d^e=k_2*p^2*q+hint \tag{1.2} $$</p>
+<p>给（1，1）式做一个e次方，（1，2）式乘一个e^e，就可以搞成一个东西：</p>
+<p>$$<br>k_3*p*lcm(p-1,q-1)+1=k_4*p^2*q+hint*e^e \tag{1.3}<br>$$</p>
+<p>再化：</p>
+<p>$$<br>p\mid hint*e^e-1 \tag{1.4}<br>$$</p>
+<p>将这个式子和n求公约数可以直接导出p，接下来正常步骤做完第一层套娃，得到e<br>然后可以发现这个e奇大无比，普通wiener搞不定，使用Boneh_Durfee attack（或者魔改wiener），扔进脚本直接解出url，下载得到最后一层套娃：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Wow, you got here!</span></span><br><span class="line"><span class="comment"># This is the last task, trust me!</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag,padding</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">m = bytes_to_long(flag)</span><br><span class="line">e = <span class="number">7</span> </span><br><span class="line"></span><br><span class="line">p = getPrime(<span class="number">512</span>)</span><br><span class="line">q = getPrime(<span class="number">512</span>)</span><br><span class="line">n = p * q</span><br><span class="line"></span><br><span class="line">c1 = <span class="built_in">pow</span>(m,e,n)</span><br><span class="line">c2 = <span class="built_in">pow</span>(m+padding,e,n)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="built_in">print</span>(c1)</span><br><span class="line"><span class="built_in">print</span>(c2)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">143224951702807798608353389056046982493788310072914995404719898237226283884553121669729599925829562704800197375580487019006702401282671268969358774635337351738915083955659230582177495821699251999928502338923489031347921151957398310960671307216790020399224115377846788378990638367296298663795893865325304226511</span></span><br><span class="line"><span class="string">74797173657575640598140788410852016843612519588375968190579734420951374103129570637822547217967978911328419808529204143522454142303138959013220811558490951614314306849367068478190797885056922705403028856734095288522290055309880572321557493798362056216783777593386133347693892941928131945986087712737862263761</span></span><br><span class="line"><span class="string">9209695919437085323423940852135308337887271742988391422139555924185234849146079306139570263602339983687993333013333937719071267190971983543492940032646907167417161479697805991443259327402389097539126399994414628326218438416138199892253597375493026563369334352434282120293396846427418323600336867792587721214</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>非常显然的coppersmith short_padding_attack加上related_message_attack，扔进脚本直接解出flag</p>
+<h3 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line"><span class="comment"># 第一层</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">h = <span class="number">788785744509676701442642497798353940704045062680685297430840370664093043099033424646382070232242765761123110381200239132310785932203252095093993313010883982078216697297202940152563278231011836966627537170460186597134847633828107444548759805274516431300662852153808962421740187067058018192457264083227110866080267684557127718769967184710395811547902947248700889674967381917907905535103547918375731341071557144999864774198881339085314424766509424492349867615604684</span></span><br><span class="line">n = <span class="number">1246903000089073759886267722667196003041462505274526737638837808213476294697746018085346623497511017543801377442390781101585650581984057653018703031659844145960721073451379508212905335383758157379301019575213158532070229897587088955814288202279949391608732448294591675986989254272257059551622461096394217684402667140362275595245430242117193793913872208576714597860532581116390903216389172132085635891741189355461016795362341416848534340615825023292174042406128959</span></span><br><span class="line">c = <span class="number">952508462840095293368043281511747192551431448088755251878915582522463097721381421883702408853564036431155676272901680250701398946525803160765527940151587567521509500006089852079864042238196362897144754722623523621230744820970423076092319608853809407595863195726851921082224085255808985329769890887863865121647796115540376158135632760785321953364738008064130705467326745546629505023549047992509562623348749056757848144371814157305011884825502144329268299851210747</span></span><br><span class="line">ee = <span class="built_in">pow</span>(e, e)</span><br><span class="line">p = gcd(ee * h - <span class="number">1</span>, n)</span><br><span class="line">q = n // p ** <span class="number">2</span></span><br><span class="line">phi = (p - <span class="number">1</span>) * p * (q - <span class="number">1</span>)</span><br><span class="line">d = invert(e,phi)</span><br><span class="line">e = <span class="built_in">pow</span>(c, d, n)</span><br><span class="line"><span class="built_in">print</span>(e)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二层</span></span><br><span class="line"><span class="comment"># Boneh_Durfee attack出的结果</span></span><br><span class="line"><span class="comment"># 脚本在https://github.com/mimoo/RSA-and-LLL-attacks/blob/master/boneh_durfee.sage</span></span><br><span class="line">d = <span class="number">103079922798932082066165266087442072203677117380612800709240732626110126828541</span></span><br><span class="line">n = <span class="number">97814568264814384858194701955408461509880555772006698372422205341758322175891474378211599333051180365254844248340812534463000531890490435018379585036704801177155418066770861143206836558793774360498040810255823235715535487716966004194143204900564413879660115112965484824906920141847149888933004740523449213441</span></span><br><span class="line"><span class="keyword">assert</span> <span class="built_in">pow</span>(<span class="built_in">pow</span>(<span class="number">3</span>,e,n),d,n) == <span class="number">3</span></span><br><span class="line"></span><br><span class="line">c = <span class="number">86143311788363675684674113699193046781796638913243016152555572150858159500527674063754694514501999791875561142925154991000532628799185608465062814546108160434468098898040769021072007374156546314975240583347468026001633652940408779155579339470960571067652924814623371177901052302005289155305089588204204313261</span></span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(<span class="built_in">pow</span>(c,d,n)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第三层</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">short_pad_attack</span>(<span class="params">c1, c2, e, n</span>):</span></span><br><span class="line">        PRxy.&lt;x,y&gt; = PolynomialRing(Zmod(n))</span><br><span class="line">        PRx.&lt;xn&gt; = PolynomialRing(Zmod(n))</span><br><span class="line">        PRZZ.&lt;xz,yz&gt; = PolynomialRing(Zmod(n))</span><br><span class="line">        g1 = x^e - c1</span><br><span class="line">        g2 = (x+y)^e - c2</span><br><span class="line">        q1 = g1.change_ring(PRZZ)</span><br><span class="line">        q2 = g2.change_ring(PRZZ)</span><br><span class="line">        h = q2.resultant(q1)</span><br><span class="line">        h = h.univariate_polynomial()</span><br><span class="line">        h = h.change_ring(PRx).subs(y=xn)</span><br><span class="line">        h = h.monic()</span><br><span class="line">        kbits = n.nbits()//(<span class="number">2</span>*e*e)</span><br><span class="line">        diff = h.small_roots(X=<span class="number">2</span>^kbits, beta=<span class="number">0.4</span>)[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">return</span> diff</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">related_message_attack</span>(<span class="params">c1, c2, diff, e, n</span>):</span></span><br><span class="line">    PRx.&lt;x&gt; = PolynomialRing(Zmod(n))</span><br><span class="line">    g1 = x^e - c1</span><br><span class="line">    g2 = (x+diff)^e - c2</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gcd</span>(<span class="params">g1, g2</span>):</span></span><br><span class="line">        <span class="keyword">while</span> g2:</span><br><span class="line">            g1, g2 = g2, g1 % g2</span><br><span class="line">        <span class="keyword">return</span> g1.monic()</span><br><span class="line">    <span class="keyword">return</span> -gcd(g1, g2)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">n = <span class="number">143224951702807798608353389056046982493788310072914995404719898237226283884553121669729599925829562704800197375580487019006702401282671268969358774635337351738915083955659230582177495821699251999928502338923489031347921151957398310960671307216790020399224115377846788378990638367296298663795893865325304226511</span></span><br><span class="line">e = <span class="number">7</span></span><br><span class="line">c1 = <span class="number">74797173657575640598140788410852016843612519588375968190579734420951374103129570637822547217967978911328419808529204143522454142303138959013220811558490951614314306849367068478190797885056922705403028856734095288522290055309880572321557493798362056216783777593386133347693892941928131945986087712737862263761</span></span><br><span class="line">c2 = <span class="number">9209695919437085323423940852135308337887271742988391422139555924185234849146079306139570263602339983687993333013333937719071267190971983543492940032646907167417161479697805991443259327402389097539126399994414628326218438416138199892253597375493026563369334352434282120293396846427418323600336867792587721214</span></span><br><span class="line">diff = short_pad_attack(c1, c2, e, n)</span><br><span class="line">m1 = related_message_attack(c1, c2, diff, e, n)</span><br><span class="line">long_to_bytes(m1)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># VNCTF&#123;H4ppyNeWy34r!2021_V&amp;N_figHt1ng!&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2021/03/19/%E5%B8%B8%E8%A7%81%E7%BC%96%E7%A0%81%E7%9A%84%E7%89%B9%E5%BE%81%E8%AF%86%E5%88%AB/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>常见编码的特征识别</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2021.<a href="/">Avalon</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="MM0n5Ter"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>MM0n5Ter</p>
+          <span class="tagline">烫烫烫烫烫</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/">胡言乱语</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook/">Guestbook</a></li>
+        <li><a href="/about/">About</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+</body>
+</html>

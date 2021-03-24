@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>常见编码的特征识别 | Avalon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="MM0n5Ter">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'null'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<div class="single">
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2021-03-19</span>
+    <h2>常见编码的特征识别</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/Crypto/" rel="tag">Crypto</a></div>
+    </div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <p>由于密码学常常会有各种奇怪编码的脑洞，所以对各种编码的特征一定要熟悉</p>
+<span id="more"></span>
+<hr>
+<h2 id="Base家族"><a href="#Base家族" class="headerlink" title="Base家族"></a><strong>Base家族</strong></h2><ul>
+<li><p><strong>Base32</strong> 由（A-Z、2-7）32个可见字符构成，“=”符号用作后缀填充。长度为4的倍数。同时，<strong>明文超过十个后面就会有很多等号</strong>。</p>
+<p>举个例子：base32（1234567）= GEZDGNBVGY3Q====</p>
+</li>
+<li><p><strong>Base64</strong> 由（A-Z、a-z、0-9、+、/）64个可见字符构成，“=”符号用作后缀填充。长度为4的倍数。</p>
+<p>举个例子：base64（1234567）= MTIzNDU2Nw==</p>
+</li>
+<li><p><strong>Base58</strong> 相比Base64，Base58不使用数字”0”，字母大写”O”，字母大写”I”，和字母小写”l”，以及”+“和”/“符号。最主要是<strong>没有等号</strong>。可以理解为一种58进制。</p>
+<p>举个例子：base58（1234567） = 2s8YYFs4Vc</p>
+</li>
+<li><p><strong>Base16</strong> 看起来像16进制，特点是<strong>没有等号并且数字要多于字母</strong></p>
+<p>举个例子：base16（1234567） = 31323334353637</p>
+</li>
+<li><p><strong>Base85</strong> 奇怪的符号很多但很难出现等号</p>
+<p>举个栗子：base85（1234567） = 0etOA2)[A</p>
+</li>
+<li><p><strong>Base100</strong> 特点：<strong>就emoji</strong></p>
+<p>举个粒子：base100（1234567） = 🐨🐩🐪🐫🐬🐭🐮</p>
+</li>
+</ul>
+<hr>
+<h2 id="Unicode、HTML实体编码、16进制Unicode"><a href="#Unicode、HTML实体编码、16进制Unicode" class="headerlink" title="Unicode、HTML实体编码、16进制Unicode"></a><strong>Unicode、HTML实体编码、16进制Unicode</strong></h2><ol>
+<li>Unicode和HTML实体编码（<strong>基本</strong>）是一个东西，<strong>特征：以&amp;#开头，加上5位十进制（汉字），3位十进制（字母），2位十进制（数字符号）</strong></li>
+<li>HTML实体编码：用一个编号写入HTML代码中来代替一个字符</li>
+<li>16进制Unicode，<strong>特征：以\u开头，加上四位16进制</strong></li>
+<li><strong>常用解密网站</strong><ul>
+<li>Unicode：<a target="_blank" rel="noopener" href="https://www.sojson.com/unicode.html">www.sojson.com</a></li>
+<li>16进制Unicode：<a target="_blank" rel="noopener" href="http://www.msxindl.com/tools/unicode16.asp">www.msxindl.com</a></li>
+<li>HTML字符实体：<a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">www.qqxiuzi.cn</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="URL、Hex"><a href="#URL、Hex" class="headerlink" title="URL、Hex"></a><strong>URL、Hex</strong></h2><p><strong>这两种加密的密文是一样的，不同的是当你用url编码网站时是不会把http进行编码的，而Hex编码则全部转化了</strong></p>
+<p>特点：带**%**</p>
+<p> <strong>常用解密网站：</strong></p>
+<ul>
+<li><p>Hex编码：<a target="_blank" rel="noopener" href="https://www.107000.com/T-Hex">https://www.107000.com/T-Hex</a> </p>
+</li>
+<li><p>URL 编码：<a target="_blank" rel="noopener" href="https://www.sojson.com/encodeurl.html">https://www.sojson.com/encodeurl.html</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="文本隐藏加密、零宽隐写"><a href="#文本隐藏加密、零宽隐写" class="headerlink" title="文本隐藏加密、零宽隐写"></a><strong>文本隐藏加密、零宽隐写</strong></h2><ol>
+<li><p>文本隐藏加密：加密过的密文会比原文的字节数多，当你按删除键的时候会发现某一处要按好多下才能把前面的字删掉</p>
+</li>
+<li><p>零宽隐写：解密后明文与密文会分开显示，密文一般隐藏在第一个字后面</p>
+</li>
+<li><p>常用解密网站：<br> 文本隐藏加密：<a target="_blank" rel="noopener" href="http://www.qqxiuzi.cn/">www.qqxiuzi.cn</a><br> 零宽隐写：yuanfux.github.io</p>
+</li>
+</ol>
+<hr>
+<h2 id="特殊暗号类加密"><a href="#特殊暗号类加密" class="headerlink" title="特殊暗号类加密"></a><strong>特殊暗号类加密</strong></h2><p>这类加密都是特征性比较强的，易辨别</p>
+<h4 id="1、猪圈密码"><a href="#1、猪圈密码" class="headerlink" title="1、猪圈密码"></a><strong>1、猪圈密码</strong></h4><p><strong>特点：只能对字母加解密并且符号无法复制，粘贴后会直接显示明文</strong></p>
+<p>字母表：懒得放图</p>
+<p>解密网站：<a target="_blank" rel="noopener" href="http://www.metools.info/code/c90.html">http://www.metools.info/code/c90.html</a></p>
+<h4 id="2、与佛论禅"><a href="#2、与佛论禅" class="headerlink" title="2、与佛论禅"></a><strong>2、与佛论禅</strong></h4><p><strong>特点：就是看不懂的佛言</strong></p>
+<p>解密网站：<a target="_blank" rel="noopener" href="http://www.keyfc.net/bbs/tools/tudoucode.aspx">http://www.keyfc.net/bbs/tools/tudoucode.aspx</a></p>
+<h4 id="3、百家姓暗号"><a href="#3、百家姓暗号" class="headerlink" title="3、百家姓暗号"></a><strong>3、百家姓暗号</strong></h4><p><strong>特点：乱七八糟百家姓</strong></p>
+<p>解密网站：<a target="_blank" rel="noopener" href="https://www.ahz0.com/bjx.html">https://www.ahz0.com/bjx.html</a></p>
+<h4 id="4、卡尔达诺栅格码"><a href="#4、卡尔达诺栅格码" class="headerlink" title="4、卡尔达诺栅格码"></a><strong>4、卡尔达诺栅格码</strong></h4><p><strong>特点：把明文伪装成垃圾邮件。。。</strong></p>
+<p>解密网站：<a target="_blank" rel="noopener" href="https://www.spammimic.com/">https://www.spammimic.com/</a></p>
+<h4 id="5、摩尔斯电码"><a href="#5、摩尔斯电码" class="headerlink" title="5、摩尔斯电码"></a><strong>5、摩尔斯电码</strong></h4><p>太常见了，<del>懒得写orz</del></p>
+<h4 id="6、Quoted-Printable"><a href="#6、Quoted-Printable" class="headerlink" title="6、Quoted-Printable"></a><strong>6、Quoted-Printable</strong></h4><p><strong>这种编码常用与邮件处理，只能对汉字进行编码，特征是=加两个大写字母或数字组合</strong></p>
+<p>解密网站：<a target="_blank" rel="noopener" href="http://www.mxcz.net/tools/QuotedPrintable.aspx">http://www.mxcz.net/tools/QuotedPrintable.aspx</a></p>
+<h4 id="7、ROT13"><a href="#7、ROT13" class="headerlink" title="7、ROT13"></a><strong>7、ROT13</strong></h4><p>是一种凯撒密码的变体，只不过比较简单，一般用来加密F***word</p>
+<p>解密网站：<a target="_blank" rel="noopener" href="http://www.mxcz.net/tools/rot13.aspx">http://www.mxcz.net/tools/rot13.aspx</a></p>
+<h4 id="8、奇妙的文本加密"><a href="#8、奇妙的文本加密" class="headerlink" title="8、奇妙的文本加密"></a><strong>8、奇妙的文本加密</strong></h4><p>这玩意儿可以加密成：汉字 数字 字母 音乐符号 国际音标 盲文 韩文 日文 傣文 彝文 俄文 箭头符号 花朵符号</p>
+<p>最后会带俩等号</p>
+<p>解密网站：<a target="_blank" rel="noopener" href="https://www.qqxiuzi.cn/bianma/wenbenjiami.php">https://www.qqxiuzi.cn/bianma/wenbenjiami.php</a></p>
+<hr>
+<h2 id="JS加密"><a href="#JS加密" class="headerlink" title="JS加密"></a><strong>JS加密</strong></h2><h4 id="1-Js颜文字加密，可直接F12"><a href="#1-Js颜文字加密，可直接F12" class="headerlink" title="1. Js颜文字加密，可直接F12"></a>1. Js<u>颜文字</u>加密，可直接F12</h4><h4 id="2-Jother"><a href="#2-Jother" class="headerlink" title="2. Jother"></a>2. Jother</h4><p>只用<code>! + ( ) [ ] &#123; &#125;</code>，可直接F12</p>
+<h4 id="3-JSfuck"><a href="#3-JSfuck" class="headerlink" title="3. JSfuck"></a>3. JSfuck</h4><p>只用<code>! + ( ) [ ]</code>，解密网站：<a target="_blank" rel="noopener" href="http://www.jsfuck.com/">http://www.jsfuck.com/</a></p>
+<h2 id="散列-哈希（因为这个沙雕主题的列表很难看所以放在最后）"><a href="#散列-哈希（因为这个沙雕主题的列表很难看所以放在最后）" class="headerlink" title="散列/哈希（因为这个沙雕主题的列表很难看所以放在最后）"></a><strong>散列/哈希</strong>（因为这个沙雕主题的列表很难看所以放在最后）</h2><p>一般这种加密算法长得很像，字符串均由“0-9”、“A-Z”组成，唯一的区别在于长度。（一般这种编码无法解密</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>md5</td>
+<td>32/16</td>
+</tr>
+<tr>
+<td>sha1</td>
+<td>40</td>
+</tr>
+<tr>
+<td>sha256</td>
+<td>64</td>
+</tr>
+<tr>
+<td>sha512</td>
+<td>128</td>
+</tr>
+<tr>
+<td>adler32</td>
+<td>8</td>
+</tr>
+<tr>
+<td>crc32</td>
+<td>8</td>
+</tr>
+<tr>
+<td>crc32b</td>
+<td>8</td>
+</tr>
+<tr>
+<td>fnv132</td>
+<td>8</td>
+</tr>
+<tr>
+<td>fnv164</td>
+<td>16</td>
+</tr>
+<tr>
+<td>fnv1a32</td>
+<td>8</td>
+</tr>
+<tr>
+<td>fnv1a64</td>
+<td>16</td>
+</tr>
+<tr>
+<td>gost</td>
+<td>64</td>
+</tr>
+<tr>
+<td>gost-crypto</td>
+<td>64</td>
+</tr>
+<tr>
+<td>haval128,3</td>
+<td>32</td>
+</tr>
+<tr>
+<td>haval128,4</td>
+<td>32</td>
+</tr>
+<tr>
+<td>haval128,5</td>
+<td>32</td>
+</tr>
+<tr>
+<td>haval160,3</td>
+<td>40</td>
+</tr>
+<tr>
+<td>haval160,4</td>
+<td>40</td>
+</tr>
+<tr>
+<td>haval160,5</td>
+<td>40</td>
+</tr>
+<tr>
+<td>haval192,3</td>
+<td>48</td>
+</tr>
+<tr>
+<td>haval192,4</td>
+<td>48</td>
+</tr>
+<tr>
+<td>haval192,5</td>
+<td>48</td>
+</tr>
+<tr>
+<td>haval224,3</td>
+<td>56</td>
+</tr>
+<tr>
+<td>haval224,4</td>
+<td>56</td>
+</tr>
+<tr>
+<td>haval224,5</td>
+<td>56</td>
+</tr>
+<tr>
+<td>haval256,3</td>
+<td>64</td>
+</tr>
+<tr>
+<td>haval256,4</td>
+<td>64</td>
+</tr>
+<tr>
+<td>haval256,5</td>
+<td>64</td>
+</tr>
+<tr>
+<td>joaat</td>
+<td>8</td>
+</tr>
+<tr>
+<td>md2</td>
+<td>32</td>
+</tr>
+<tr>
+<td>md4</td>
+<td>32</td>
+</tr>
+<tr>
+<td>ripemd128</td>
+<td>32</td>
+</tr>
+<tr>
+<td>ripemd160</td>
+<td>40</td>
+</tr>
+<tr>
+<td>ripemd256</td>
+<td>64</td>
+</tr>
+<tr>
+<td>ripemd320</td>
+<td>80</td>
+</tr>
+<tr>
+<td>sha224</td>
+<td>56</td>
+</tr>
+<tr>
+<td>sha3-224</td>
+<td>56</td>
+</tr>
+<tr>
+<td>sha3-256</td>
+<td>64</td>
+</tr>
+<tr>
+<td>sha3-384</td>
+<td>96</td>
+</tr>
+<tr>
+<td>sha3-512</td>
+<td>128</td>
+</tr>
+<tr>
+<td>sha512/224</td>
+<td>56</td>
+</tr>
+<tr>
+<td>sha512/256</td>
+<td>64</td>
+</tr>
+<tr>
+<td>snefru</td>
+<td>64</td>
+</tr>
+<tr>
+<td>snefru256</td>
+<td>64</td>
+</tr>
+<tr>
+<td>tiger128,3</td>
+<td>32</td>
+</tr>
+<tr>
+<td>tiger128,4</td>
+<td>32</td>
+</tr>
+<tr>
+<td>tiger160,3</td>
+<td>40</td>
+</tr>
+<tr>
+<td>tiger160,4</td>
+<td>40</td>
+</tr>
+<tr>
+<td>tiger192,3</td>
+<td>48</td>
+</tr>
+<tr>
+<td>tiger192,4</td>
+<td>48</td>
+</tr>
+<tr>
+<td>whirlpool</td>
+<td>128</td>
+</tr>
+<tr>
+<td>mysql</td>
+<td>16位，且第1位和第7位必须为0-8</td>
+</tr>
+<tr>
+<td>mysql5</td>
+<td>40</td>
+</tr>
+<tr>
+<td>NTLM</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Domain Cached Credentials</td>
+<td>32</td>
+</tr>
+</tbody></table>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2021/03/23/2021V-N-Crypto%E6%96%B9%E5%90%91/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>2021V&N...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2021/03/18/%E6%A2%A6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%9C%B0%E6%96%B9/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>梦开始的地方</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2021.<a href="/">Avalon</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="MM0n5Ter"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>MM0n5Ter</p>
+          <span class="tagline">烫烫烫烫烫</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/">胡言乱语</a></li></ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+        <ul>
+          <li><a href="/guestbook/">Guestbook</a></li>
+        <li><a href="/about/">About</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+
+
+</body>
+</html>
