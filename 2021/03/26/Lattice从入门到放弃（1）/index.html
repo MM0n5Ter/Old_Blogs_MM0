@@ -116,9 +116,25 @@
 <h2 id="Lattice的密度"><a href="#Lattice的密度" class="headerlink" title="Lattice的密度"></a>Lattice的密度</h2><p>我们可以用一个Lattice的Determinant来衡量这个格的点阵分布的密度。</p>
 <p>首先，我们把上一部分基向量组成的多面体的中心挪到原点上来。这样，空间$P$仍然保持相同的体积。</p>
 <p>随后，我们可以把这个多面体复制多份，然后平移到每一个Lattice中的点上。这样我们就会得到很多份$P$，并且这些多面体可以平分整个多维空间$\mathbb{R}^n$。</p>
-<p><img src="/2021/03/26/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%881%EF%BC%89/image-20200717025114542.png" alt="4.1"></p>
+<p><img src="/2021/03/26/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%881%EF%BC%89/4.1.png" alt="4.1"></p>
 <p>此时，我们如果在这个空间中任意的画一个球体（多维空间即超球体），然后可以数数看这个球体中覆盖了多少Lattice里的点。点的数量平均于球体的体积，就是这个格的密度了。</p>
-<h2 id="最短距离"><a href="#最短距离" class="headerlink" title="最短距离"></a>最短距离</h2>
+<h2 id="最短距离"><a href="#最短距离" class="headerlink" title="最短距离"></a>最短距离</h2><p>我们一般用$λ_1$来定义整个格中点与点之间最短的距离。一般为了方便理解，我们就把其中的一个点设置成坐标轴0点，然后$λ_1$就变成了距离$O$点距离最近的格点。</p>
+<p>而这些$λ$需要遵守一个非常简单的规则：<br>$$<br>λ_1\leλ_2\leλ_3\le\cdots\cdots\leλ_n<br>$$<br>一个特殊的例子就是笛卡尔坐标系下的整数格$\mathbb{Z}^n$，因为所有的基向量全部都长度相等，并且相互垂直，所以$λ_1=λ_2=⋯=λ_n=1$。</p>
+<h2 id="距离函数和覆盖半径"><a href="#距离函数和覆盖半径" class="headerlink" title="距离函数和覆盖半径"></a>距离函数和覆盖半径</h2><p>给定任意的点$t$（可以不在格点上），定义距离函数$μ(t,L)$为这个点到最近格点的距离。</p>
+<p>我们可以左右移动这个点$t$，就可以得到这个格中最大的$μ$，称之为覆盖半径。</p>
+<p>据二维笛卡尔坐标系为例，则为向量$i$,$j$,$i-j$所围成的三角形的外接圆半径。</p>
+<p><img src="/2021/03/26/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%881%EF%BC%89/6.1.png" alt="6.1"></p>
+<p>从另一方面理解覆盖半径，即为在每一格点作圆（三维及以上类比），不断增大圆的半径，圆与圆之间的空隙也就不断缩小，直到半径等于覆盖半径时，整个空间完全被覆盖。</p>
+<p><img src="/2021/03/26/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%881%EF%BC%89/6.2.png" alt="6.2"><br><img src="/2021/03/26/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%881%EF%BC%89/6.3.png" alt="6.3"></p>
+<h2 id="Lattice的光滑化"><a href="#Lattice的光滑化" class="headerlink" title="Lattice的光滑化"></a>Lattice的光滑化</h2><p>在上一个概念中，将作圆改为叠加一个圆形的随机噪声，在圆的半径达到覆盖半径之前，空间上都会有空白区域，但在达到覆盖半径之后，因为圆和圆之间会有重叠部分，所以噪声分布很不均匀，这时就需要对其进行光滑化。值得注意的是，要获得最光滑的空间，我们的半径要无限大，即一个圆能覆盖整个空间，这样的构造是无意义的。</p>
+<p>所以<del>我们规定</del>一定要有一个<del>巫妖王</del>光滑化半径的上限<br>$$<br>||r||\le log(n)·\sqrt{n}λ_n<br>$$</p>
+<h2 id="Minkowski凸集定理（Convex-body-theorem）"><a href="#Minkowski凸集定理（Convex-body-theorem）" class="headerlink" title="Minkowski凸集定理（Convex body theorem）"></a>Minkowski凸集定理（Convex body theorem）</h2><p>二维即为高中数竞所学的闵可夫斯基定理，主要理解其高维意义：</p>
+<p>在多维空间内有一个凸集$C$，令其包含原点。若$vol(C)&gt;2^n$，则这个凸集必含有异于原点的一个格点。</p>
+<p>在整数格$\mathbb{Z}^n$中非常好理解，因为以原点出发到所有下一个点这段距离构成的空间，恰好就是$2^n$，所以说任何凸集（集合的表面不能有凹陷）只要体积大于$2^n$，那就一定会溢出这段空间，进而覆盖某个非0的格点。通过Pigeonhole Principle（鸽子洞原理）<del>就是抽屉原理哒</del>就可以很生动的理解了。</p>
+<p>然后通过线性变换将整数格变为新格，该定理仍然成立。</p>
+<p>Minkowski定理最重要的用处就是给出一个Lattice中最短向量的一个上限值。<br>$$<br>λ_1(L)≤\sqrt{n}r=\sqrt{n}det(L)^{1/n}<br>$$<br>理解：如果把这个Lattice的Determinant对应的空间压缩成一个立方体，那么这个立方体的对角线长度就是$\sqrt{n}r$。因为对角线的另一头就是下一个格点了（但不一定是最近的格点），所以$λ_1$肯定要小于等于这个对角线的长度。</p>
+<h2 id="Minkowski第二定理"><a href="#Minkowski第二定理" class="headerlink" title="Minkowski第二定理"></a>Minkowski第二定理</h2><p>Minkowski第二定理给出了对于其他短向量$λ_i$的一个取值上限。<br>$$<br>λ_1(L)\le\left(\prod_iλ_i(L)\right)^{1/n}\le\sqrt{n}·det(L)^{1/n}<br>$$<br>第二定理指出，全部$n$个最短向量的几何平均数，一定会小于等于我们之前给出的$\sqrt{n}r$这个对角线的长度。这个其实就是对于上面我们说的把一个任意的Determinant对应的空间压缩成一个等边长的立方体的话，对角线就是$\sqrt{n}r$这么长。然而现实中一个任意Lattice的Determinant空间是一个不规则的Parallelepiped，所以边长肯定各不相同。但是因为体积是一样的，所以我们用几何平均数的方法就可以很好的约束这个Parallelpiped每个边的长度。</p>
+
       </div>
     </div>
   </div>
