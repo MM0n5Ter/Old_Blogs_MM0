@@ -101,6 +101,7 @@
 
 <span id="more"></span>
 
+<h2 id="Lattice中的各种问题及其联系"><a href="#Lattice中的各种问题及其联系" class="headerlink" title="Lattice中的各种问题及其联系"></a><strong>Lattice中的各种问题及其联系</strong></h2><p><img src="/2021/03/30/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%882%EF%BC%89/0.1.png" alt="0.1"></p>
 <h2 id="最短向量问题SVP"><a href="#最短向量问题SVP" class="headerlink" title="最短向量问题SVP"></a>最短向量问题SVP</h2><p>SVP问题的定义：给定一个基为$B$的格$L$，找到一个这个基构成的格点$Bx$，使得这个点到原点的距离最小。</p>
 <p><img src="/2021/03/30/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%882%EF%BC%89/1.1.png" alt="1.1"></p>
 <p>在上图中，$λ_1$为最短向量，基$B=[b_1,b_2]$，我们可以找到一个点$Bx$，即$5b_1-2b_2$这个点，正好对应$λ_1$。需要注意的是，$λ_1$作为最短向量，$Bx$不可能比之还短，最多等于。</p>
@@ -108,6 +109,10 @@
 <p>在$SVP_γ$中，问题的设定大致一样，但是唯一不一样的在于，我们找到的点$Bx$，并不一定需要恰好是最短向量$λ_1$，而只要满足小于等于$λ_1$的一个倍数$γ$就行了。</p>
 <h2 id="最近向量问题CVP"><a href="#最近向量问题CVP" class="headerlink" title="最近向量问题CVP"></a>最近向量问题CVP</h2><p>CVP问题的定义：在连续空间内任意给一点$t$，找距离这个点最近的格点$Bx$。</p>
 <p><img src="/2021/03/30/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%882%EF%BC%89/2.1.png" alt="2.1"><br>$$<br>||Bx||\leλ<br>$$<br>此处的$λ$即指覆盖半径。同理可得，CVP也有一个宽松版本$CVP_γ$。</p>
+<h2 id="两种CVP问题"><a href="#两种CVP问题" class="headerlink" title="两种CVP问题"></a>两种CVP问题</h2><p>给定一个格$L$，与一个随机点$t$还有搜索距离$d$，并且假设$μ(t,L)≤d$，CVP问题是让我们找到一个合理的格点$Bx∈L$并且这个点到$t$的距离小于等于$d$。</p>
+<p>CVP问题对于搜索的范围和结果的大小已经有所约束了，但是并没有约束一共有多少结果和范围究竟有多大。所以CVP问题又可以细分为两种主要的版本。</p>
+<h4 id="BDD（Bounded-Distance-Decoding）问题"><a href="#BDD（Bounded-Distance-Decoding）问题" class="headerlink" title="BDD（Bounded Distance Decoding）问题"></a>BDD（Bounded Distance Decoding）问题</h4><p>BDD问题规定了$d&lt;λ1(L)/2$，也就是说$d$小于最短向量的一半。并且这个CVP问题最多只有一个唯一的解，并且这个解一定是距离$t$最近的格点。</p>
+<h4 id="ADD（Absolute-Distance-Decoding）问题"><a href="#ADD（Absolute-Distance-Decoding）问题" class="headerlink" title="ADD（Absolute Distance Decoding）问题"></a>ADD（Absolute Distance Decoding）问题</h4><p>ADD问题则不同，规定了$d≥μ(L)$，也就是说$d$大于整个格的覆盖半径了。这个时候，这个CVP问题至少会有一个解，但是我们找到的解并不一定是距离$t$最近的格点。</p>
 <h2 id="最短独立向量问题SIVP"><a href="#最短独立向量问题SIVP" class="headerlink" title="最短独立向量问题SIVP"></a>最短独立向量问题SIVP</h2><p>SIVP问题的定义：给定一个格$L(B)$，找到$n$个线性独立的向量$Bx_1,…,Bx_n$并且这些向量的长度都要小于等于最长的最短向量$λ_n$。</p>
 <p><img src="/2021/03/30/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%882%EF%BC%89/3.1.png" alt="3.1"></p>
 <p>这个图就很好的表达了在$n=2$的情况下，我们找到了两个小于等于$λ_2$的点。和SVP与CVP问题一样，我们也可以给出SIVP问题的宽松版定义，即$SIVP_γ$。在宽松版本中，我们只需要找到$γλ_n$范围内的就可以了。</p>
@@ -119,10 +124,10 @@
 <p><img src="/2021/03/30/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%882%EF%BC%89/4.1.png" alt="4.1"></p>
 <p>在解决CVP问题的时候，我们还需要知道这个Lattice中最短向量$λ_1$的值来判断CVP问题是不是能够求解出原本的那个点$Bx$。我们需要通过求解SVP问题来得到$λ_1$。</p>
 <p>最后，SIVP问题在这里也有所适用。如果我们在传输的过程中为了压缩数据使用了向量量化（Vector Quantization）的方法，在重建向量的时候，需要用到SIVP的解来修复误差。</p>
-<h2 id="两种CVP问题"><a href="#两种CVP问题" class="headerlink" title="两种CVP问题"></a>两种CVP问题</h2><p>给定一个格$L$，与一个随机点$t$还有搜索距离$d$，并且假设$μ(t,L)≤d$，CVP问题是让我们找到一个合理的格点$Bx∈L$并且这个点到$t$的距离小于等于$d$。</p>
-<p>CVP问题对于搜索的范围和结果的大小已经有所约束了，但是并没有约束一共有多少结果和范围究竟有多大。所以CVP问题又可以细分为两种主要的版本。</p>
-<h4 id="BDD（Bounded-Distance-Decoding）问题"><a href="#BDD（Bounded-Distance-Decoding）问题" class="headerlink" title="BDD（Bounded Distance Decoding）问题"></a>BDD（Bounded Distance Decoding）问题</h4><p>BDD问题规定了$d&lt;λ1(L)/2$，也就是说$d$小于最短向量的一半。并且这个CVP问题最多只有一个唯一的解，并且这个解一定是距离$t$最近的格点。</p>
-<h4 id="ADD（Absolute-Distance-Decoding）问题"><a href="#ADD（Absolute-Distance-Decoding）问题" class="headerlink" title="ADD（Absolute Distance Decoding）问题"></a>ADD（Absolute Distance Decoding）问题</h4><p>ADD问题则不同，规定了$d≥μ(L)$，也就是说$d$大于整个格的覆盖半径了。这个时候，这个CVP问题至少会有一个解，但是我们找到的解并不一定是距离$t$最近的格点。</p>
+<div class="note warning">
+            <h2 id="将ADD问题归约到SIVP问题上"><a href="#将ADD问题归约到SIVP问题上" class="headerlink" title="将ADD问题归约到SIVP问题上"></a>将ADD问题归约到SIVP问题上</h2><p>假设我们需要求解ADD(L,t)，我们可以首先用SIVP算法得到这个Lattice的n个独立最短向量V=SIVP(L)。一旦得到了V之后，我们就可以选取这些向量作为基，平分整个多维空间$R_n$。然后我们只需要看t在那个分区中，然后向上或者向下取整一下，找到那个分区对应的格点，就是我们ADD问题的解了。</p><p><img src="/2021/03/30/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%882%EF%BC%89/5.1.png" alt="5.1"></p><p>因为我们是使用了取整的操作来找到格点的，所以这个解的格点到tt的距离，我们也可以找到一个最大的上限，即：<br>$$<br>∑_i\frac12||v_i||≤(n/2)λ_n≤nμ<br>$$</p><p><del>其实我还不是很懂，人麻了</del></p>
+          </div>
+
 
       </div>
     </div>
