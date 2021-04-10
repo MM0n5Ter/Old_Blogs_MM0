@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>MRctf2021 Crypto方向 | Avalon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="MM0n5Ter">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'null'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+<div class="single">
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2021-04-10</span>
+    <h2>MRctf2021 Crypto方向</h2>
+    <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/Crypto/" rel="tag">Crypto</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/MRctf/" rel="tag">MRctf</a></div>
+    <div class="social-links">
+    <a href="https://github.com/mm0n5ter" target="_blank"><i class="fa fa-github fa-fw"></i></a>
+    <a href="mailto:mm0n57er@gmail.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+    <a href="https://steamcommunity.com/profiles/76561198333915763" target="_blank"><i class="fa fa-steam fa-fw"></i></a>
+</div></div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <p>2021mrctf的crypto方向writeup</p>
+<span id="more"></span>
+
+<h1 id="friendly-sign-in"><a href="#friendly-sign-in" class="headerlink" title="friendly_sign-in"></a>friendly_sign-in</h1><p>白给签到题，虽然我做了好久（</p>
+<p><em>呜呜呜我好菜</em></p>
+<p>给了一个nc接口和task.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha512</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> choices</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line">Bits = <span class="number">512</span></span><br><span class="line">length = <span class="built_in">len</span>(flag) * <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">proof_of_work</span>() -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">    alphabet = string.ascii_letters + string.digits</span><br><span class="line">    head = <span class="string">&quot;&quot;</span>.join(choices(alphabet, k=<span class="number">8</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;POW: SHA512(&quot;<span class="subst">&#123;head&#125;</span>&quot; + ?) starts with &quot;11111&quot;&#x27;</span>)</span><br><span class="line">    tail = <span class="built_in">input</span>().strip()</span><br><span class="line">    message = (head + tail).encode()</span><br><span class="line">    <span class="keyword">return</span> sha512(message).hexdigest().startswith(<span class="string">&quot;11111&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_ans</span>(<span class="params">_N, _x</span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">    check = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(_N)):</span><br><span class="line">        check += _N[i] * _x[i]</span><br><span class="line">    <span class="keyword">return</span> check == <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> proof_of_work():</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Welcome to MRCTF2021, enjoy this friendly sign-in question~&quot;</span>)</span><br><span class="line">    flag_bits = <span class="built_in">bin</span>(bytes_to_long(flag.encode()))[<span class="number">2</span>:]</span><br><span class="line">    N = [getPrime(Bits) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(length)]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;N =&#x27;</span>, N)</span><br><span class="line">    X = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(length):</span><br><span class="line">        x = [<span class="built_in">int</span>(<span class="built_in">input</span>().strip()) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(length)]</span><br><span class="line">        <span class="keyword">if</span> x <span class="keyword">in</span> X:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;No cheat!&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">if</span> x.count(<span class="number">0</span>) &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;No trivial!&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> check_ans(N, x):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Follow the rule!&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        X.append(x)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;your gift:&#x27;</span>, flag_bits[i])</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<p>nc接口连进去，先是一个sha512的暴力解密</p>
+<p>然后是一个初见觉得很怪异的方程：<br>$$<br>\Sigma a_ix_i=0<br>$$<br>其中$a_i$为224个512位的大素数</p>
+<p>然后需要解出224组<del>做完后发现其实只要223组</del>不同的解</p>
+<p>一开始的想法为$x_i=(-1)^i lcm(a_i)\div a_i$，然后224组就每组乘上一个不同的系数，然后时间炸了。。。</p>
+<p>然后想出两两配对相消，然后只让一组乘系数来保证不同解，成功搞出flag</p>
+<p><em>确实是一道签到难度的💧题，得亏我卡了那么久</em></p>
+<h3 id="Exp"><a href="#Exp" class="headerlink" title="Exp"></a>Exp</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">text = path.recvline().decode()</span><br><span class="line">tem = text.split(<span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(text)</span><br><span class="line">path.sendline(sign_in(tem[<span class="number">1</span>]))</span><br><span class="line">text = path.recvline()</span><br><span class="line">text = path.recvline().decode().split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">text[<span class="number">0</span>] = text[<span class="number">0</span>][<span class="number">5</span>:]</span><br><span class="line">text[-<span class="number">1</span>] = text[-<span class="number">1</span>][:-<span class="number">2</span>]</span><br><span class="line"><span class="built_in">sum</span> = <span class="number">1</span></span><br><span class="line">lib = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(length):</span><br><span class="line">    lib.append(<span class="built_in">int</span>(text[i]))</span><br><span class="line"></span><br><span class="line">flag_bin = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(length-<span class="number">1</span>): <span class="comment">#此处的-1是因为做满224次后会因为223次输出后就断开连接而报错</span></span><br><span class="line">    path.sendline(<span class="built_in">str</span>(<span class="number">0</span> - (j + <span class="number">1</span>) * lib[<span class="number">1</span>]).encode())</span><br><span class="line">    path.sendline(<span class="built_in">str</span>((j + <span class="number">1</span>) * lib[<span class="number">0</span>]).encode())</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, length):</span><br><span class="line">        <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">            path.sendline(<span class="built_in">str</span>(<span class="number">0</span> - lib[i + <span class="number">1</span>]).encode())</span><br><span class="line">        <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">            path.sendline(<span class="built_in">str</span>(lib[i - <span class="number">1</span>]).encode())</span><br><span class="line">    text = path.recvline().decode()</span><br><span class="line">    <span class="built_in">print</span>(text)</span><br><span class="line">    flag_bin = flag_bin + text[-<span class="number">2</span>:-<span class="number">1</span>]</span><br><span class="line">    <span class="built_in">print</span>(flag_bin)</span><br><span class="line"></span><br><span class="line">flag = long_to_bytes(<span class="built_in">int</span>(flag_bin, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2021/04/07/RE-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84QT%E5%AD%A6%E4%B9%A0/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>RE:从零开始...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2021.<a href="/">Avalon</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="MM0n5Ter"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>MM0n5Ter</p>
+          <span class="tagline">烫烫烫烫烫</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-th-list fa-fw"></i>分类</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/dev/">dev</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/">胡言乱语</a></li></ul>
+    </li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>友链</span>
+        <ul>
+          <li> <a href="https://karmotrine.fun/" target="_blank">一个二次元</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+</body>
+</html>
