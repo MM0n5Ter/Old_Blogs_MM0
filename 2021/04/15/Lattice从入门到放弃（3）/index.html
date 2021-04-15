@@ -73,7 +73,7 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
-    <span>2021-04-03</span>
+    <span>2021-04-15</span>
     <h2>Lattice从入门到放弃（3）</h2>
     <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/Crypto/" rel="tag">Crypto</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/Lattice/" rel="tag">Lattice</a></div>
     <div class="social-links">
@@ -103,7 +103,22 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="Lattice的几何构造"><a href="#Lattice的几何构造" class="headerlink" title="Lattice的几何构造"></a>Lattice的几何构造</h2><p>咕咕咕😴😴😴</p>
+<p>我发现格的很多算法都是源于线性代数，呜呜呜，可怜我上个学期的下半学期没有好好学线代（哭哭咧</p>
+<h2 id="施密特正交化"><a href="#施密特正交化" class="headerlink" title="施密特正交化"></a>施密特正交化</h2><p>直接放上我的丑陋笔记</p>
+<p><img src="/2021/04/15/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%883%EF%BC%89/Schmidtnote.jpg" alt="Gb1kkdo82N9UJk=="></p>
+<h2 id="LLL算法"><a href="#LLL算法" class="headerlink" title="LLL算法"></a>LLL算法</h2><p>据说是将a lattice basis 转换为 LLL-reduced basis，去解决$SVP_\gamma$问题，其中$\gamma=2^{(n-1)/2}$</p>
+<p>转换方法就是做施密特正交化，但要满足如下两个条件：</p>
+<p><img src="/2021/04/15/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%883%EF%BC%89/v2-55a33752c4ea7746a22d23c4bb2ef3bb_r.png" alt="condition"></p>
+<p>简单来说，就是施密特正交化应用到Lattice上时，要求新生成的基底仍然位于Lattice内，因此相减时取整数倍。另外在运行时确保前k个向量近似有序递增，不能满足时交换向量并回退。</p>
+<p>while k &lt; n:</p>
+<p>​        # 用前k-1个向量对B[k]进行规约（取整）</p>
+<p>​        if Lovász condition:</p>
+<p>​                k = k + 1</p>
+<p>​        else:</p>
+<p>​                # 交换B[k]与B[k-1] k回退</p>
+<p>从这两个条件中可以推出两个结论：</p>
+<p><img src="/2021/04/15/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%883%EF%BC%89/v2-4d060fb89ebf032d2d9caad77beaf16e_720w.png" alt="conclusion1"></p>
+<p><img src="/2021/04/15/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%883%EF%BC%89/v2-834b3d9ff4c70528ee56c613c18841ee_720w.png" alt="conclusion2"></p>
 
       </div>
     </div>
@@ -112,12 +127,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2021/04/07/RE-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84QT%E5%AD%A6%E4%B9%A0/">
+		<a class="copy" href="#">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>RE:从零开始...</h3>
+						<h3>没有更新的文章</h3>
 					</div>
 				</div>
 			</div>
@@ -125,12 +140,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2021/03/30/Lattice%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83%EF%BC%882%EF%BC%89/">
+		<a class="copy" href="/2021/04/10/MRctf2021-Crypto%E6%96%B9%E5%90%91/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>Lattice...</h3>
+						<h3>MRctf20...</h3>
 					</div>
 				</div>
 			</div>
