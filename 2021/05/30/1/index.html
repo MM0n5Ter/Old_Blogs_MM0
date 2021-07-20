@@ -114,8 +114,8 @@
 <p>这里的s其实就是那条直线的斜率</p>
 <p>同时我们定义点$P(x_1,y_1)$的逆元为$-P(x_1,-y1)$，它们的关系为：$P+(-P)=\vartheta$，同时$\vartheta$拥有性质：$\forall P,P+\vartheta = P $</p>
 <p>我们将$\vartheta$命名为单位元，它位于椭圆曲线图上的无限远处</p>
-<h1 id="3-使用椭圆曲线构造离散对数问题"><a href="#3-使用椭圆曲线构造离散对数问题" class="headerlink" title="3.使用椭圆曲线构造离散对数问题"></a><strong>3.使用椭圆曲线构造离散对数问题</strong></h1><p>曲线上的所有点刚好构成一个阿贝尔群，且对于一个椭圆曲线，$\exist k,kP+P=P$，即$kP=\vartheta$这个$k$被称为阶</p>
-<p>我们有Hasse’s定理来确定阶的范围（p为模数）：<br>$$<br>p+1-2\sqrt{p}&lt;#E&lt;p+1+2\sqrt{p}<br>$$<br>而已知$P$要求$kP$，我们可以使用类似快速幂的算法</p>
+<h1 id="3-使用椭圆曲线构造离散对数问题"><a href="#3-使用椭圆曲线构造离散对数问题" class="headerlink" title="3.使用椭圆曲线构造离散对数问题"></a><strong>3.使用椭圆曲线构造离散对数问题</strong></h1><p>曲线上的所有点刚好构成一个阿贝尔群，且对于一个椭圆曲线，存在$k$，使得$kP+P=P$，即$kP=\vartheta$这个$k$被称为阶</p>
+<p>我们有Hasse’s定理来确定阶的范围（p为模数）：<br>$$<br>p+1-2\sqrt{p}&lt;E&lt;p+1+2\sqrt{p}<br>$$<br>而已知$P$要求$kP$，我们可以使用类似快速幂的算法</p>
 <h1 id="4-基于椭圆曲线的Diffie-Hellman密钥交换"><a href="#4-基于椭圆曲线的Diffie-Hellman密钥交换" class="headerlink" title="4.基于椭圆曲线的Diffie-Hellman密钥交换"></a><strong>4.基于椭圆曲线的Diffie-Hellman密钥交换</strong></h1><p>大前提：使用同一个椭圆方程，同一个素数p和同一个本原元$P(x_0,y_0)$</p>
 <p>alice任取a，bob任取b，分别作aP和bP，同时交换所得结果</p>
 <p>alice再对所得结果乘a，bob同理，得到联合密钥$T_{ab}$<br>$$<br>T_{ab}=(x_{ab},y_{ab})=abP<br>$$</p>
@@ -128,12 +128,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2021/07/20/re1/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>没有更新的文章</h3>
+						<h3>RE的学习记录</h3>
 					</div>
 				</div>
 			</div>
@@ -191,7 +191,7 @@
     <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     <li class="has-sub"><span class="dropdown-heading">
       <i class="fa fa-th-list fa-fw"></i>分类</span>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/dev/">dev</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/">胡言乱语</a></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Crypto/">Crypto</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/RE/">RE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/">胡言乱语</a></li></ul>
     </li>
     
     <li class="has-sub"><span class="dropdown-heading">
